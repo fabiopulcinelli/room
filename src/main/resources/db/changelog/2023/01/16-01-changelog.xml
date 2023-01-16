@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.18.xsd">
+
+    <changeSet id="1" author="fabio">
+        <createTable tableName="room">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="numeroStanza" type="number"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="fabio">
+        <modifyDataType tableName="room" columnName="numeroStanza" newDataType="integer"/>
+    </changeSet>
+
+    <changeSet id="3" author="fabio" context="prod">
+        <sql>
+            INSERT into room (numeroStanza)
+            values (106);
+        </sql>
+        <sql>
+            INSERT into room (numeroStanza)
+            values (210);
+        </sql>
+        <sql>
+            INSERT into room (numeroStanza)
+            values (314);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
